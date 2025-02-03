@@ -1,18 +1,26 @@
 <?php
 
+use App\Article;
 use PHPUnit\Framework\TestCase;
 
 class ArticleTest extends TestCase
 {
+    protected $article;
+    protected function setUp(): void
+    {
+        $this->article = new Article();
+    }
     public function testTitleIsEmptyByDefault()
     {
-        $article = new App\Article;
-        $this->assertEmpty($article->title);
+        $this->assertEmpty($this->article->title);
     }
     public function testSlugIsEmptyWithNoTitle()
     {
-        $article = new App\Article;
-
-        $this->assertSame($article->getSlug(), null);
+        $this->assertSame($this->article->getSlug(), "");
+    }
+    public function testSlugHasSpacesReplacedByUnderscores()
+    {
+        $this->article->title = "hello world";
+        $this->assertEquals($this->article->getSlug(), "hello_world");
     }
 }

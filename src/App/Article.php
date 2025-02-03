@@ -7,6 +7,8 @@ class Article
     public ?string $title = null;
 
     public function getSlug(){
-        return "";
+        $slug = $this->title;
+        $slug = str_replace(' ', '_', $slug);
+        return $slug;
     }
 }
