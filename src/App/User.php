@@ -16,8 +16,14 @@ class User
         $this->mailer = $mailer;
     }
 
+    /**
+     * @param string $message
+     * @return boolean
+     */
     public function notify(string $message)
     {
-        return $this->mailer::send($this->email, $message);
+        $mailer = new Mailer();
+
+        return $this->mailer->send($this->email, $message);
     }
 }
