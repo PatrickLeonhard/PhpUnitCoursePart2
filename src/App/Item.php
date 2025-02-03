@@ -27,4 +27,14 @@ class Item
     {
         return uniqid();
     }
+
+    /**
+     * @param string
+     *
+     * @return string
+     */
+    private function getPrefixedToken(string $prefix)
+    {
+        return uniqid($prefix);
+    }
 }
