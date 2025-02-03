@@ -8,7 +8,13 @@ class Article
 
     public function getSlug(){
         $slug = $this->title;
-        $slug = trim(preg_replace('/\s+/', '_', $slug), "_");
+
+        $slug = preg_replace('/\s+/', '_', $slug);
+
+        $slug = preg_replace('/[^\w]+/', '', $slug);
+
+        $slug = trim($slug, '_');
+
         return $slug;
     }
 }
